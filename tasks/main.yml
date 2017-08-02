@@ -1,0 +1,14 @@
+---
+- name: add ppa
+  apt_repository:
+    repo: "ppa:deluge-team/ppa"
+    filename: deluge
+    codename: trusty
+    state: present
+    # validate_certs: no
+
+- name: update cache
+  shell: apt-get update
+
+- name: install deluge
+  apt: name=deluge state=latest
