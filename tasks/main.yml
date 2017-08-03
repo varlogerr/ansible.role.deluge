@@ -1,5 +1,5 @@
 ---
-- name: add ppa
+- name: add deluge ppa
   apt_repository:
     repo: "ppa:deluge-team/ppa"
     filename: deluge
