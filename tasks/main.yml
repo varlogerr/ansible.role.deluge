@@ -1,9 +1,19 @@
 ---
+- name: set default repo codename to trusty
+  set_fact: repo_codename=trusty
+
+- name: set repo codename to xenial
+  set_fact: repo_codename=xenial
+  when:
+  - current_distro in [
+      "Linuxmint18"
+    ]
+
 - name: add deluge ppa
   apt_repository:
     repo: "ppa:deluge-team/ppa"
     filename: deluge
-    codename: trusty
+    codename: "{{ repo_codename }}"
     state: present
 
 - name: update cache
